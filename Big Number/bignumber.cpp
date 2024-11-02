@@ -37,8 +37,11 @@ public:
 
         return BigNumber(result);
     }
+ BigNumber operator-(const BigNumber& other) const {
+        if (*this < other) {
+            throw invalid_argument("Cannot subtract larger number from smaller one.");
+        }
 
-    BigNumber operator-(const BigNumber& other) const {
         string result = "";
         int borrow = 0;
         int len1 = digits.size();
@@ -48,13 +51,14 @@ public:
             int digit1 = digits[len1 - 1 - i] - '0';
             int digit2 = (i < len2) ? other.digits[len2 - 1 - i] - '0' : 0;
             int diff = digit1 - digit2 - borrow;
+
             if (diff < 0) {
                 diff += 10;
                 borrow = 1;
-            }
-            else {
+            } else {
                 borrow = 0;
             }
+
             result = char(diff + '0') + result;
         }
 
@@ -65,18 +69,19 @@ public:
 
         if (pos == result.size()) {
             result = "0";
-        }
-        else {
-            string newResult = "";
-            for (size_t i = pos; i < result.size(); ++i) {
-                newResult += result[i];
-            }
-            result = newResult;
+        } else {
+            result = result.substr(pos);
         }
 
         return BigNumber(result);
     }
 
+    bool operator<(const BigNumber& other) const {
+        if (digits.size() != other.digits.size()) {
+            return digits.size() < other.digits.size();
+        }
+        return digits < other.digits;
+    }
     BigNumber operator<<(int shift) const {
         return BigNumber(digits + string(shift, '0'));
     }
