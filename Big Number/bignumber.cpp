@@ -5,7 +5,7 @@ using namespace std;
 class BigNumber {
 private:
     string digits;
-    BigNumber(string str) : digits(move(str)) {}
+    BigNumber(string str) : digits(str) {}
 
 public:
     BigNumber(int number = 0) {
