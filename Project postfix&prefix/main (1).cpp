@@ -188,14 +188,14 @@ void plotGraph(const string &postfix) {
     window.setFramerateLimit(60);
 
     sf::VertexArray axes(sf::Lines, 4);
-    axes[0].position = sf::Vector2f(400, 0); // y-axis
+    axes[0].position = sf::Vector2f(400, 0); 
     axes[1].position = sf::Vector2f(400, 600);
-    axes[2].position = sf::Vector2f(0, 300); // x-axis
+    axes[2].position = sf::Vector2f(0, 300); 
     axes[3].position = sf::Vector2f(800, 300);
     for (int i = 0; i < 4; i++) axes[i].color = sf::Color::Black;
 
     sf::VertexArray points(sf::Points);
-    float scale = 50.0f; // scale factor
+    float scale = 50.0f;
 
     double xStart = -10.0, xEnd = 10.0, xStep = 0.01;
 
