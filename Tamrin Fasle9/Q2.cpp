@@ -2,7 +2,6 @@
 #include <queue>
 using namespace std;
 
-// Definition of a binary tree node
 struct TreeNode {
     int data;
     TreeNode* left;
@@ -11,7 +10,6 @@ struct TreeNode {
     TreeNode(int value) : data(value), left(nullptr), right(nullptr) {}
 };
 
-// Function to perform Morris In-Order Traversal
 void morrisInOrderTraversal(TreeNode* root) {
     TreeNode* current = root;
     while (current != nullptr) {
@@ -35,7 +33,6 @@ void morrisInOrderTraversal(TreeNode* root) {
     }
 }
 
-// Function to create a binary tree dynamically from user input
 TreeNode* createTree() {
     cout << "Enter the root node value (or -1 for no node): ";
     int rootValue;
